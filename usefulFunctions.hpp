@@ -5,15 +5,15 @@
 #ifndef WHO_WANTS_TO_BE_MILIONARE_USEFULFUNCTIONS_HPP
 #define WHO_WANTS_TO_BE_MILIONARE_USEFULFUNCTIONS_HPP
 
-char LevelFromIntToChar(int level);
+char levelFromIntToChar(int level);
 
-void PrintNewLines(int number);
+void printNewLines(int number);
 
-void PrintEmptySpaces(int number);
+void printEmptySpaces(int number);
 
-void IDLookingGenerator(int level, char questionID[6]);
+void firstTwoDigitsIDGenerator(int level, char questionID[6]);
 
-void FullIDCreatingGenerator(int topicChoice, int number, char fullQuestionID[]);
+void lastFiveDigitsIDGenerator(int topicChoice, int number, char fullQuestionID[]);
 
 void FillingEmptySpace(char option[], int optionSize);
 

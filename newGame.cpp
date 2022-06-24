@@ -9,7 +9,7 @@ NewGame::NewGame()
       chosenTopic(0),
       gameLost(false) {}
 
-int NewGame::pickATopic() {}
+int NewGame::pickATopic() {}  // TODO
 
 void NewGame::startGame() {
   do {
@@ -17,7 +17,13 @@ void NewGame::startGame() {
       chosenTopic = selectRandomTopic();
     }
     nameOfTopic();
-    
+
+    id.firstTwoDigitsIDGenerator(level);
+    int variantsOfQuestion = id.numberOfVariationsOfAQuestion(nameOfFile);
+    id.lastFiveDigitsIDGenerator(chosenTopic, variantsOfQuestion);
+
+    currentQuestion.loadQuestionAndAnswers(nameOfFile, id.getID());
+    currentQuestion.printQuestionAndAnswers();
 
   } while (!gameLost);
 }
