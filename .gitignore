@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+# vscode files and folders
+.vscode
+WhoWantsToBeAMillionaire.code-workspace
