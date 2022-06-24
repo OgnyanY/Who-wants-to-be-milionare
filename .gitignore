@@ -34,3 +34,8 @@
 # vscode files and folders
 .vscode
 WhoWantsToBeAMillionaire.code-workspace
+
+# CLion files and folders
+.idea
+cmake-build-debug
+CmakeLists.txt
