@@ -1,7 +1,3 @@
-//
-// Created by Acer on 22.6.2022 г..
-//
-
 #include "mainMenuPage.hpp"
 
 void MainMenuPage::createMainMenuPage() {
@@ -30,7 +26,7 @@ void MainMenuPage::printMainMenuPage() {
 void MainMenuPage::makeChoiceInMenu(char menuChoice) {
 
     if (menuChoice == '1') {
-        //NewGame();
+        NewGame();
     }
     else if (menuChoice == '2') {
         //EnteringNewQuestion();
