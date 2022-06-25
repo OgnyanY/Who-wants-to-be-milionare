@@ -1,10 +1,5 @@
 #include "id.hpp"
 
-#include <fstream>
-#include <iostream>
-
-#include "usefulFunctions.hpp"
-
 ID::ID() : id("ID:XX-XXXXX") {}
 
 ID::ID(const std::string id) : id(id) {}

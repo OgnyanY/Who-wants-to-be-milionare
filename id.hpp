@@ -1,5 +1,9 @@
 #pragma once
 #include <string>
+#include <fstream>
+#include <iostream>
+
+#include "usefulFunctions.hpp"
 
 class ID {
  public:

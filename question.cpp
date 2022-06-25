@@ -1,8 +1,5 @@
 #include "question.hpp"
 
-#include <fstream>
-#include <iostream>
-
 void Question::printQuestionAndAnswers() {
   std::cout << ID_of_question << '\n'
             << question << '\n'

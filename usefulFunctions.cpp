@@ -2,7 +2,7 @@
 
 #include <iomanip>
 #include <iostream>
-#include <string>
+
 
 using namespace std;
 
@@ -50,8 +50,9 @@ void PrintBorder() {
   cout << endl;
 }
 
-void ValidInput(char& number, const std::string& str) {
+char ValidInput(const std::string& str) {
   bool validChoice = false;
+  char number;
   do {
     cin >> number;
     for (int i = 0; i < str.size(); i++) {  // if the input does not match with
@@ -64,6 +65,7 @@ void ValidInput(char& number, const std::string& str) {
       break;
     }
   } while (!validChoice);  // looping while a valid choice isn't entered
+  return number;
 }
 
 void ValidInputForWords(const char enteringWord[], const char possibleWord[],

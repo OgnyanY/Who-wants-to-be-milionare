@@ -5,6 +5,8 @@
 #ifndef WHO_WANTS_TO_BE_MILIONARE_USEFULFUNCTIONS_HPP
 #define WHO_WANTS_TO_BE_MILIONARE_USEFULFUNCTIONS_HPP
 
+#include <string>
+
 char levelFromIntToChar(int level);
 
 void printNewLines(int number);
@@ -23,7 +25,7 @@ int StrLength(const char str[]);
 
 void PrintBorder();
 
-void ValidInput(char& number, const std::string& str);
+char ValidInput(const std::string& str);
 
 void ValidInputForWords(const char enteringWord[], const char possibleWord[], int MessageSize, bool& incorrectValidation);
 
