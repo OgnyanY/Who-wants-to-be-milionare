@@ -21,26 +21,7 @@ void printEmptySpaces(int number) {
   }
 }
 
-
-void CopyStr(const char originalString[], char copiedVersion[]) {
-  int i = 0;
-  for (i = 0; originalString[i] != '\0';
-       i++) {  // coppying the text, while the loop meets a terminating zero
-    copiedVersion[i] = originalString[i];
-  }
-  copiedVersion[i] =
-      '\0';  // than we add manual terminating zero after the last symbol
-}
-
-int StrLength(const char str[]) {
-  int size = 0;
-  while (str[size] != '\0') {  // getting size of string
-    size++;
-  }
-  return size;
-}
-
-void PrintBorder() {
+void printBorder() {
   cout << endl;
   cout << setw(3);
   const int SIZE_OF_CONSOLE_ROW = 120;
@@ -50,7 +31,7 @@ void PrintBorder() {
   cout << endl;
 }
 
-char ValidInput(const std::string& str) {
+char validInput(const std::string& str) {
   bool validChoice = false;
   char number;
   do {
@@ -132,10 +113,10 @@ void ProperNewLineToString(char question[]) {
 }
 void ThanksForPlaying() {  // exiting message
   printNewLines(6);
-  PrintBorder();
+    printBorder();
   cout << "\n\n                                         Thanks for playing, "
           "have a nice day !\n\n";
-  PrintBorder();
+    printBorder();
   printNewLines(6);
 }
 

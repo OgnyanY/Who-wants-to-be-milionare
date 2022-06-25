@@ -61,7 +61,7 @@ char NewGame::giveAnswer() {
             << possibleAnswers[1] << ", " << possibleAnswers[2] << " or "
             << possibleAnswers[3] << "): ";
 
-  return ValidInput(possibleAnswers);
+  return validInput(possibleAnswers);
 }
 
  bool NewGame::checkIfAnswerIsCorrect(char answer){ // TODO

@@ -9,7 +9,7 @@ void MainMenuPage::createMainMenuPage() {
         printMainMenuPage();
 
         std::string possibleChoices = { '1', '2', '3', '0' };
-        this->choice = ValidInput(possibleChoices);
+        this->choice = validInput(possibleChoices);
         system("cls");//clearing console
         makeChoiceInMenu(this->choice);
     } while (choice != '0');
@@ -22,7 +22,7 @@ void MainMenuPage::printMainMenuPage() {
     std::cout << "                                                2. Entering new question\n";
     std::cout << "                                              3. Editing existing question\n";
     std::cout << "                                                         0.Exit\n";
-    PrintBorder();
+    printBorder();
 
     std::cout << "\n                                                   Enter your choice: ";
 }
