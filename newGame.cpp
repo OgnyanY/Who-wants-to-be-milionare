@@ -14,35 +14,19 @@ NewGame::NewGame()
 
 void NewGame::startGame() {
   do {
-    if (randomTopic) {
-      chosenTopic = selectRandomTopic();
-    }
-    nameOfTopic();
-
-    id.firstTwoDigitsIDGenerator(level);
-    int variantOfQuestion =
-        rand() % id.numberOfVariationsOfAQuestion(nameOfFile) + 1;
-    id.lastFiveDigitsIDGenerator(chosenTopic, variantOfQuestion);
-
-    currentQuestion.loadQuestionAndAnswers(nameOfFile, id.getID());
-    std::system("cls");
-    currentQuestion.printQuestionAndAnswers();
-    // if(availableJokers()) SHOW MESSAGE FOR USING JOKERS
-
-    char answer = giveAnswer();
-    std::system("cls");
-    if (checkIfAnswerIsCorrect(answer)) {
-      level++;
-      if (keepingMoneyQuestion()) {
-        keepMoneyMessage();
-        return;
+    choosingNameOfFile();
+    generateID();
+    loadAndPrintQuestionAndAnswers();
+    if (availableJokers()) {
+      if (askToUseJoker()) {
+        std::string jokersToUse;
+        showAvailableJokers(jokersToUse);
+        char decision = validInput(jokersToUse);
+        useDesiredJoker(decision);
       }
-    } else {
-      printGameOver();
-      std::system("pause");
-      std::system("cls");
-      break;
     }
+
+    validatingAnswer();
   } while (!gameLost && level < 15);
 }
 
@@ -65,9 +49,79 @@ void NewGame::nameOfTopic() {
   }
 }
 
+void NewGame::choosingNameOfFile() {
+  if (randomTopic) {
+    chosenTopic = selectRandomTopic();
+  }
+  nameOfTopic();
+}
+
+void NewGame::generateID() {
+  id.firstTwoDigitsIDGenerator(level);
+  int variantOfQuestion =
+      rand() % id.numberOfVariationsOfAQuestion(nameOfFile) + 1;
+  id.lastFiveDigitsIDGenerator(chosenTopic, variantOfQuestion);
+}
+
+void NewGame::loadAndPrintQuestionAndAnswers() {
+  currentQuestion.loadQuestionAndAnswers(nameOfFile, id.getID());
+  std::system("cls");
+  currentQuestion.printQuestionAndAnswers();
+  possibleAnswers = "ABCD";
+}
+
 bool NewGame::availableJokers() {
-  // if(at least one joker is available){return true}
-  return true;
+  return (availableFiftyFiftyJoker || availableAudienceHelpJoker ||
+          availableFriendCallJoker);
+}
+
+bool NewGame::askToUseJoker() {
+  std::cout
+      << "  Do you want to use a joker? (type: 'y' for yes or 'n' for no)";
+  return validInput("yn") == 'y';
+}
+
+void NewGame::showAvailableJokers(std::string jokersToUse) {
+  std::string outputString;
+  if (availableFiftyFiftyJoker) {
+    outputString += "press X for 50/50\n";
+    jokersToUse += "X";
+  }
+  if (availableAudienceHelpJoker) {
+    outputString += "press Y for help from the audience";
+    jokersToUse += "Y";
+  }
+  if (availableFriendCallJoker) {
+    outputString += "press Z for calling a friend";
+    jokersToUse += "Z";
+  }
+  outputString += "press 0 for escape:";
+  jokersToUse += "0";
+
+  std::cout << outputString;
+}
+
+void NewGame::useDesiredJoker(char decision) {
+  if (decision == 'X') {
+    // activate 50/50 joker
+    // clear screen
+    // print the question again
+    // proceed with giving the answer
+  } else if (decision == 'Y') {
+    // activate call a friend joker
+    // clear screen
+    // print the question again with message from friend
+    // proceed with giving the answer
+  } else if (decision == 'Z') {
+    // activate ask the audience joker
+    // clear screen
+    // print the question again with message from the audience
+    // proceed with giving the answer
+  } else {
+    // clear screen
+    // print the question again
+    // proceed with giving the answer
+  }
 }
 
 char NewGame::giveAnswer() {
@@ -149,4 +203,21 @@ void NewGame::keepMoneyMessage() {
             << "$ in Who wants to be a millionaire, thanks for playing! ";
   std::cout << '\n';
   printBorder();
+}
+
+void NewGame::validatingAnswer() {
+  char answer = giveAnswer();
+  std::system("cls");
+  if (checkIfAnswerIsCorrect(answer)) {
+    level++;
+    if (keepingMoneyQuestion()) {
+      gameLost = true;
+      keepMoneyMessage();
+    }
+  } else {
+    gameLost = true;
+    printGameOver();
+    std::system("pause");
+    std::system("cls");
+  }
 }

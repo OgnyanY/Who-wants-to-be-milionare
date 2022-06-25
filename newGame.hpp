@@ -12,15 +12,25 @@ class NewGame {
   NewGame();
   int pickATopic();
   void startGame();
+
   int selectRandomTopic();
   void nameOfTopic();
+  void choosingNameOfFile();//
+  void generateID();//
+  void loadAndPrintQuestionAndAnswers();//
+
   bool availableJokers();
+  bool askToUseJoker();
+  void showAvailableJokers(std::string jokersToUse);
+  void useDesiredJoker(char decision);
+
   char giveAnswer();
   bool checkIfAnswerIsCorrect(char answer);
   void printPassedQuestion();
   void printGameOver();
   bool keepingMoneyQuestion();
   void keepMoneyMessage();
+  void validatingAnswer();//
 
  public://private:
   int level;

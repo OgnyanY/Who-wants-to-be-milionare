@@ -39,6 +39,6 @@ void MainMenuPage::makeChoiceInMenu(char menuChoice) {
         //EditingExistingQuestion();
     }
     else {
-        ThanksForPlaying();
+        //ThanksForPlaying();
     }
 }
