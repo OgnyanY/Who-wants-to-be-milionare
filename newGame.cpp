@@ -9,7 +9,7 @@ NewGame::NewGame()
       chosenTopic(0),
       gameLost(false) {}
 
-int NewGame::pickATopic() {}  // TODO
+// int NewGame::pickATopic() {}  // TODO
 
 void NewGame::startGame() {
   do {
@@ -19,11 +19,15 @@ void NewGame::startGame() {
     nameOfTopic();
 
     id.firstTwoDigitsIDGenerator(level);
-    int variantsOfQuestion = id.numberOfVariationsOfAQuestion(nameOfFile);
-    id.lastFiveDigitsIDGenerator(chosenTopic, variantsOfQuestion);
+    int variantOfQuestion =
+        rand() % id.numberOfVariationsOfAQuestion(nameOfFile) + 1;
+    id.lastFiveDigitsIDGenerator(chosenTopic, variantOfQuestion);
 
     currentQuestion.loadQuestionAndAnswers(nameOfFile, id.getID());
     currentQuestion.printQuestionAndAnswers();
+    // if(availableJokers()) SHOW MESSAGE FOR USING JOKERS
+
+    char answer = giveAnswer();
 
   } while (!gameLost);
 }
@@ -46,3 +50,20 @@ void NewGame::nameOfTopic() {
     nameOfFile = "topics/Politics.txt";
   }
 }
+
+bool NewGame::availableJokers() {
+  // if(at least one joker is available){return true}
+  return true;
+}
+
+char NewGame::giveAnswer() {
+  std::cout << "  Your answer (" << possibleAnswers[0] << ", "
+            << possibleAnswers[1] << ", " << possibleAnswers[2] << " or "
+            << possibleAnswers[3] << "): ";
+
+  return ValidInput(possibleAnswers);
+}
+
+ bool NewGame::checkIfAnswerIsCorrect(char answer){ // TODO
+  return true;
+ }

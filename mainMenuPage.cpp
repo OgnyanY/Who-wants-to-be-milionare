@@ -6,18 +6,17 @@
 
 void MainMenuPage::createMainMenuPage() {
     do {
-        this->choice = '\0';
         printMainMenuPage();
 
         std::string possibleChoices = { '1', '2', '3', '0' };
-        ValidInput(this->choice, possibleChoices);
+        this->choice = ValidInput(possibleChoices);
         system("cls");//clearing console
         makeChoiceInMenu(this->choice);
     } while (choice != '0');
 }
 
 void MainMenuPage::printMainMenuPage() {
-    PrintNewLines(6);
+    printNewLines(6);
     std::cout << "  ========================================== Who wants to be a millionaire? ==========================================\n\n";
     std::cout << "                                                      1. New Game\n";
     std::cout << "                                                2. Entering new question\n";

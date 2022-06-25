@@ -1,6 +1,5 @@
 #pragma once
 #include <time.h>
-
 #include <vector>
 
 #include "id.hpp"
@@ -13,8 +12,11 @@ class NewGame {
   void startGame();
   int selectRandomTopic();
   void nameOfTopic();
+  bool availableJokers();
+  char giveAnswer();
+  bool checkIfAnswerIsCorrect(char answer);
 
- private:
+ public://private:
   int level;
   bool availableFiftyFiftyJoker;
   bool availableAudienceHelpJoker;
@@ -33,4 +35,6 @@ class NewGame {
 
   ID id;
   Question currentQuestion;
+
+  std::string possibleAnswers;
 };
