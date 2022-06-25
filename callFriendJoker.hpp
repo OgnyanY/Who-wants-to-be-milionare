@@ -12,14 +12,16 @@
 
 class CallFriendJoker {
 public:
-    void callFriend(std::string &possibleAnswers, char &correctAnswer, int &level);
+    void useJoker(std::string &possibleAnswers, char &correctAnswer, int &level);
+
+protected:
+    int getIndexOfCorrectAnswer(std::string &possibleAnswers, char &correctAnswer);
 
 private:
     int calculatePercentChanceOfLying(int &level);
 
-    void giveAnswerToQuestion(int &randomNumber, int &percentChanceOfLying, std::string &possibleAnswers, char &correctAnswer);
-
-    int getIndexOfCorrectAnswer(std::string &possibleAnswers, char &correctAnswer);
+    void giveAnswerToQuestion(int &randomNumber, int &percentChanceOfLying,
+                                      std::string &possibleAnswers, char &correctAnswer);
 
     void giveWrongAnswer(std::string &possibleAnswers, char &correctAnswer);
 

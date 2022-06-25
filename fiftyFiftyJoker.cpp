@@ -1,9 +1,9 @@
 #include "fiftyFiftyJoker.hpp"
 
-void FiftyFiftyJoker::fiftyFifty(char correctAnswer, std::string& option1, std::string& option2,
-                                 std::string& option3, std::string& option4) {
+void FiftyFiftyJoker::fiftyFifty(char correctAnswer, std::string &option1, std::string &option2,
+                                 std::string &option3, std::string &option4) {
 
-    std::vector<std::string> options = {option1,option2,option3,option4};
+    std::vector<std::string> options = {option1, option2, option3, option4};
 
     srand(time(nullptr));//setting the seed, from which the randomizer will randomise
     int skipOption = findCorrectAnswerIndex(correctAnswer, option1,
@@ -13,7 +13,7 @@ void FiftyFiftyJoker::fiftyFifty(char correctAnswer, std::string& option1, std::
     int secondDeleteOptionIndex = findSecondOptionToDelete(skipOption, firstDeleteOptionIndex);
 
     eraseTwoWrongAnswers(firstDeleteOptionIndex, secondDeleteOptionIndex, options);
-    takeNewOptions(option1,option2,option3,option4,options);
+    takeNewOptions(option1, option2, option3, option4, options);
 }
 
 int FiftyFiftyJoker::findCorrectAnswerIndex(char correctAnswer, std::string &option1, std::string &option2,
@@ -50,7 +50,6 @@ int FiftyFiftyJoker::findSecondOptionToDelete(int &skipOption, int &firstDeleteO
 
 void FiftyFiftyJoker::eraseTwoWrongAnswers(int &firstDeleteOptionIndex, int &secondDeleteOptionIndex,
                                            std::vector<std::string> &options) {
-
     for (int i = 0; i < options.size(); ++i) {
         if (firstDeleteOptionIndex == i + 1 || secondDeleteOptionIndex == i + 1) {
             FillingEmptySpace(options[i], options[i].size());

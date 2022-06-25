@@ -6,7 +6,7 @@
 #include <cstdlib>
 
 //#include "editQuestion.hpp"
-//#include "newGame.hpp"
+#include "newGame.hpp"
 //#include "newQuestion.hpp"
 #include "usefulFunctions.hpp"
 
