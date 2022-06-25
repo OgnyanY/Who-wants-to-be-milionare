@@ -2,6 +2,7 @@
 
 #include <iomanip>
 #include <iostream>
+#include <string>
 
 
 using namespace std;
@@ -75,9 +76,7 @@ void AddAdditonalCharacters(char OGstring[], int& OGlength, char addstr1[]) {
   }
   OGlength = StrLength(OGstring);
 }
-void FillingEmptySpace(
-    char option[],
-    int optionSize) {  // filling the space of an option for 50/50 joker
+void FillingEmptySpace(std::string option, int optionSize) {  // filling the space of an option for 50/50 joker
   for (int i = 0; i < optionSize; i++) {
     option[i] = ' ';
   }

@@ -13,7 +13,7 @@ void firstTwoDigitsIDGenerator(int level, char questionID[6]);
 
 void lastFiveDigitsIDGenerator(int topicChoice, int number, char fullQuestionID[]);
 
-void FillingEmptySpace(char option[], int optionSize);
+void FillingEmptySpace(std::string option, int optionSize);
 
 void printBorder();
 
