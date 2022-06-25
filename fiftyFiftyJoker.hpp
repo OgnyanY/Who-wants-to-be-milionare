@@ -13,14 +13,17 @@
 
 class FiftyFiftyJoker {
 public:
-    void fiftyFifty(char &correctAnswer, std::string &option1, std::string &option2,
+    void fiftyFifty(char correctAnswer, std::string &option1, std::string &option2,
                     std::string &option3, std::string &option4);
 private:
-    int findTheCorrectAnswer(char correctAnswer, std::string option1, std::string option2,
-                             std::string option3, std::string option4);
+    int findCorrectAnswerIndex(char correctAnswer, std::string &option1, std::string &option2,
+                               std::string &option3, std::string &option4);
     int findFirstOptionToDelete(int& skipOption);
     int findSecondOptionToDelete(int& skipOption, int &firstDeleteOptionIndex);
-    void eraseTwoWrongAnswers(int &firstDeleteOptionIndex, int &secondDeleteOptionIndex, std::vector<std::string> &options);
+    void eraseTwoWrongAnswers(int &firstDeleteOptionIndex, int &secondDeleteOptionIndex,
+                              std::vector<std::string> &options);
+    void takeNewOptions(std::string &option1, std::string &option2,
+                        std::string &option3, std::string &option4, std::vector<std::string> &options);
 };
 
 
