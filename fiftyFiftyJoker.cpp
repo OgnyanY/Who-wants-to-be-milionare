@@ -1,22 +1,23 @@
 #include "fiftyFiftyJoker.hpp"
 
-void FiftyFiftyJoker::fiftyFifty(char &correctAnswer, std::string& option1, std::string& option2,
+void FiftyFiftyJoker::fiftyFifty(char correctAnswer, std::string& option1, std::string& option2,
                                  std::string& option3, std::string& option4) {
 
     std::vector<std::string> options = {option1,option2,option3,option4};
 
     srand(time(nullptr));//setting the seed, from which the randomizer will randomise
-    int skipOption = findTheCorrectAnswer(correctAnswer, option1,
-                                          option2, option3, option4);
+    int skipOption = findCorrectAnswerIndex(correctAnswer, option1,
+                                            option2, option3, option4);
 
     int firstDeleteOptionIndex = findFirstOptionToDelete(skipOption);
     int secondDeleteOptionIndex = findSecondOptionToDelete(skipOption, firstDeleteOptionIndex);
 
     eraseTwoWrongAnswers(firstDeleteOptionIndex, secondDeleteOptionIndex, options);
+    takeNewOptions(option1,option2,option3,option4,options);
 }
 
-int FiftyFiftyJoker::findTheCorrectAnswer(char correctAnswer, std::string option1, std::string option2,
-                                          std::string option3, std::string option4) {
+int FiftyFiftyJoker::findCorrectAnswerIndex(char correctAnswer, std::string &option1, std::string &option2,
+                                            std::string &option3, std::string &option4) {
     if (option1[0] == correctAnswer) {
         return 1;
     } else if (option2[0] == correctAnswer) {
@@ -55,4 +56,13 @@ void FiftyFiftyJoker::eraseTwoWrongAnswers(int &firstDeleteOptionIndex, int &sec
             FillingEmptySpace(options[i], options[i].size());
         }
     }
+}
+
+void
+FiftyFiftyJoker::takeNewOptions(std::string &option1, std::string &option2, std::string &option3, std::string &option4,
+                                std::vector<std::string> &options) {
+    option1 = options[0];
+    option2 = options[1];
+    option3 = options[2];
+    option4 = options[3];
 }

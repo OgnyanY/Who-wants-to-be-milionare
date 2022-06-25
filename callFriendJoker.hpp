@@ -2,11 +2,13 @@
 #define WHO_WANTS_TO_BE_MILIONARE_CALLFRIENDJOKER_HPP
 
 #include <iostream>
-#include "usefulFunctions.hpp"
 #include <fstream>
 #include <ctime>
 #include <stdlib.h>
-//#include "NewGame.h"
+#include <string>
+
+#include "usefulFunctions.hpp"
+#include "newGame.hpp"
 
 class CallFriendJoker {
 public:
