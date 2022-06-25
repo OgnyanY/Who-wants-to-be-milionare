@@ -8,6 +8,8 @@ class Question {
   Question() = default;
   void printQuestionAndAnswers();
   void loadQuestionAndAnswers(const std::string nameOfFile, const std::string ID);
+  char getCorrectAnswer() const;
+  std::string correctFullAnswer() const;
 
  private:
   std::string ID_of_question;

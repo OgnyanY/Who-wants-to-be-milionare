@@ -35,3 +35,17 @@ void Question::loadQuestionAndAnswers(const std::string nameOfFile,
 
   currentLine.close();
 }
+
+char Question::getCorrectAnswer() const { return correctAnswer[0]; }
+
+std::string Question::correctFullAnswer() const {
+  if (correctAnswer[0] == firstAnswer[0]) {
+    return firstAnswer;
+  } else if (correctAnswer[0] == secondAnswer[0]) {
+    return secondAnswer;
+  } else if (correctAnswer[0] == thirdAnswer[0]) {
+    return thirdAnswer;
+  } else {
+    return forthAnswer;
+  }
+}

@@ -1,9 +1,11 @@
 #pragma once
 #include <time.h>
 #include <vector>
+#include <cstdlib>
 
 #include "id.hpp"
 #include "question.hpp"
+
 
 class NewGame {
  public:
@@ -15,6 +17,10 @@ class NewGame {
   bool availableJokers();
   char giveAnswer();
   bool checkIfAnswerIsCorrect(char answer);
+  void printPassedQuestion();
+  void printGameOver();
+  bool keepingMoneyQuestion();
+  void keepMoneyMessage();
 
  public://private:
   int level;
