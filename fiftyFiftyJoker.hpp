@@ -1,13 +1,26 @@
-//
-// Created by Acer on 25.6.2022 г..
-//
-
 #ifndef WHO_WANTS_TO_BE_MILIONARE_FIFTYFIFTYJOKER_HPP
 #define WHO_WANTS_TO_BE_MILIONARE_FIFTYFIFTYJOKER_HPP
 
+#include <iostream>
+#include <fstream>
+#include <ctime>
+#include <stdlib.h>
+#include <string>
+#include <vector>
 
-class fiftyFiftyJoker {
+#include "usefulFunctions.hpp"
+#include "newGame.hpp"
 
+class FiftyFiftyJoker {
+public:
+    void fiftyFifty(char &correctAnswer, std::string &option1, std::string &option2,
+                    std::string &option3, std::string &option4);
+private:
+    int findTheCorrectAnswer(char correctAnswer, std::string option1, std::string option2,
+                             std::string option3, std::string option4);
+    int findFirstOptionToDelete(int& skipOption);
+    int findSecondOptionToDelete(int& skipOption, int &firstDeleteOptionIndex);
+    void eraseTwoWrongAnswers(int &firstDeleteOptionIndex, int &secondDeleteOptionIndex, std::vector<std::string> &options);
 };
 
 
