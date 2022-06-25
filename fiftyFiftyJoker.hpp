@@ -1,0 +1,14 @@
+//
+// Created by Acer on 25.6.2022 г..
+//
+
+#ifndef WHO_WANTS_TO_BE_MILIONARE_FIFTYFIFTYJOKER_HPP
+#define WHO_WANTS_TO_BE_MILIONARE_FIFTYFIFTYJOKER_HPP
+
+
+class fiftyFiftyJoker {
+
+};
+
+
+#endif //WHO_WANTS_TO_BE_MILIONARE_FIFTYFIFTYJOKER_HPP
