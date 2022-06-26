@@ -1,33 +1,29 @@
 #ifndef WHO_WANTS_TO_BE_MILIONARE_FIFTYFIFTYJOKER_HPP
 #define WHO_WANTS_TO_BE_MILIONARE_FIFTYFIFTYJOKER_HPP
 
-#include <iostream>
-#include <fstream>
-#include <ctime>
 #include <stdlib.h>
+
+#include <ctime>
+#include <fstream>
+#include <iostream>
 #include <string>
 #include <vector>
 
+#include "question.hpp"
 #include "usefulFunctions.hpp"
 
 class FiftyFiftyJoker {
-public:
-    void useJoker(char correctAnswer, std::string &option1, std::string &option2,
-                  std::string &option3, std::string &option4);
+ public:
+  void useJoker(Question &question);
 
-private:
-    int findCorrectAnswerIndex(char correctAnswer, std::string &option1, std::string &option2,
-                               std::string &option3, std::string &option4);
+ private:
+  int findCorrectAnswerIndex(Question &question);
 
-    int findFirstOptionToDelete(int &skipOption);
+  int findFirstOptionToDelete(int &skipOption);
 
-    int findSecondOptionToDelete(int &skipOption, int &firstDeleteOptionIndex);
+  int findSecondOptionToDelete(int &skipOption, int &firstDeleteOptionIndex);
 
-    void eraseTwoWrongAnswers(int &firstDeleteOptionIndex, int &secondDeleteOptionIndex,
-                              std::vector<std::string> &options);
-
-    void takeNewOptions(std::string &option1, std::string &option2,
-                        std::string &option3, std::string &option4, std::vector<std::string> &options);
+  void eraseWrongAnswer(int indexToDelete, Question &question);
 };
 
-#endif //WHO_WANTS_TO_BE_MILIONARE_FIFTYFIFTYJOKER_HPP
+#endif  // WHO_WANTS_TO_BE_MILIONARE_FIFTYFIFTYJOKER_HPP
