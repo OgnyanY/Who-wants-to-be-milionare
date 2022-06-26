@@ -12,6 +12,7 @@
 
 class MainMenuPage {
 public:
+    MainMenuPage() = default;
     void createMainMenuPage();
 
 private:

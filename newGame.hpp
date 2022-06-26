@@ -13,7 +13,7 @@
 class NewGame {
  public:
   NewGame();
-  int pickATopic();
+  void pickATopic();
   void startGame();
 
   int selectRandomTopic();
@@ -24,7 +24,7 @@ class NewGame {
 
   bool availableJokers();
   bool askToUseJoker();
-  void showAvailableJokers(std::string jokersToUse);
+  void showAvailableJokers(std::string& jokersToUse);
   void useDesiredJoker(char decision);
 
   char giveAnswer();
@@ -36,7 +36,6 @@ class NewGame {
   void validatingAnswer();
 
   void printPickATopic();
-  std::string selectTopic(char &choice);
 
  public://private:
   int level;

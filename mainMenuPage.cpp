@@ -1,10 +1,10 @@
 #include "mainMenuPage.hpp"
 
 void MainMenuPage::createMainMenuPage() {
+    std::string possibleChoices = { '1', '2', '3', '0' };
     do {
         printMainMenuPage();
 
-        std::string possibleChoices = { '1', '2', '3', '0' };
         this->choice = validInput(possibleChoices);
         system("cls");//clearing console
         makeChoiceInMenu(this->choice);
@@ -26,7 +26,8 @@ void MainMenuPage::printMainMenuPage() {
 void MainMenuPage::makeChoiceInMenu(char menuChoice) {
 
     if (menuChoice == '1') {
-        NewGame();
+        NewGame startNewGame;
+        startNewGame.pickATopic();
     }
     else if (menuChoice == '2') {
         //EnteringNewQuestion();

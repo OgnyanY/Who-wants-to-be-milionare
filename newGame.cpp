@@ -10,24 +10,21 @@ NewGame::NewGame()
       gameLost(false),
       possibleAnswers("ABCD") {}
 
-int NewGame::pickATopic() {
-    printPickATopic();
+void NewGame::pickATopic() {
+  printPickATopic();
 
-    std::string possibleChoices = { '1', '2', '3', '4', '5', '9', '0' };
-    char choice = validInput(possibleChoices);
+  std::string possibleChoices = {'1', '2', '3', '4', '5', '9', '0'};
+  chosenTopic = validInput(possibleChoices) - '0';
 
-    if(choice == 0){//return to main menu
-        return 0;
-    }
-
-    randomTopic = false;//adding option to choose all categories
-
-    std::string topic = selectTopic(choice);
-
-    ///StartNewGame(topic, randomTopic);
-
-    return choice - '0';
-
+  if (chosenTopic == 0) {  // return to main menu
+    std::system("cls");
+    return;
+  } else if (chosenTopic == 9) {
+    randomTopic = true;
+  } else {
+    randomTopic = false;
+  }
+  startGame();
 }
 
 void NewGame::startGame() {
@@ -46,6 +43,7 @@ void NewGame::startGame() {
 
     validatingAnswer();
   } while (!gameLost && level < 15);
+  std::system("cls");
 }
 
 int NewGame::selectRandomTopic() {
@@ -99,18 +97,18 @@ bool NewGame::askToUseJoker() {
   return validInput("yn") == 'y';
 }
 
-void NewGame::showAvailableJokers(std::string jokersToUse) {
+void NewGame::showAvailableJokers(std::string& jokersToUse) {
   std::string outputString;
   if (availableFiftyFiftyJoker) {
     outputString += "press X for 50/50\n";
     jokersToUse += "X";
   }
   if (availableAudienceHelpJoker) {
-    outputString += "press Y for help from the audience";
+    outputString += "press Y for help from the audience\n";
     jokersToUse += "Y";
   }
   if (availableCallFriendJoker) {
-    outputString += "press Z for calling a friend";
+    outputString += "press Z for calling a friend\n";
     jokersToUse += "Z";
   }
   outputString += "press 0 for escape:";
@@ -121,34 +119,21 @@ void NewGame::showAvailableJokers(std::string jokersToUse) {
 
 void NewGame::useDesiredJoker(char decision) {
   if (decision == 'X') {
-      fiftyFiftyJoker.useJoker(currentQuestion.getCorrectAnswer(), currentQuestion.firstAnswer,
-                            currentQuestion.secondAnswer, currentQuestion.thirdAnswer,
-                            currentQuestion.forthAnswer);
-
-      system("cls");//clearing console
-      currentQuestion.printQuestionAndAnswers();
-
-      availableFiftyFiftyJoker = false;
-
+    availableFiftyFiftyJoker = false;
+    fiftyFiftyJoker.useJoker(currentQuestion);
+    system("cls");  // clearing console
+    currentQuestion.printQuestionAndAnswers();
   } else if (decision == 'Y') {
-      callFriendJoker.useJoker("ABCD",currentQuestion.getCorrectAnswer(), level);
-
-      system("cls");//clearing console
-      currentQuestion.printQuestionAndAnswers();
-
-      availableCallFriendJoker = false;
+    availableCallFriendJoker = false;
+    callFriendJoker.useJoker("ABCD", currentQuestion.getCorrectAnswer(), level);
 
   } else if (decision == 'Z') {
-      audienceHelpJoker.useJoker("ABCD",currentQuestion.getCorrectAnswer(), level);
-
-      system("cls");//clearing console
-      currentQuestion.printQuestionAndAnswers();
-
-      availableAudienceHelpJoker = false;
-
+    availableAudienceHelpJoker = false;
+    audienceHelpJoker.useJoker("ABCD", currentQuestion.getCorrectAnswer(),
+                               level);
   } else {
-      system("cls");//clearing console
-      currentQuestion.printQuestionAndAnswers();
+    system("cls");  // clearing console
+    currentQuestion.printQuestionAndAnswers();
   }
 }
 
@@ -231,6 +216,7 @@ void NewGame::keepMoneyMessage() {
             << "$ in Who wants to be a millionaire, thanks for playing! ";
   std::cout << '\n';
   printBorder();
+  std::system("pause");
 }
 
 void NewGame::validatingAnswer() {
@@ -251,55 +237,27 @@ void NewGame::validatingAnswer() {
 }
 
 void NewGame::printPickATopic() {
-    printNewLines(6);
-    std::cout << "  ========================================== Who wants to be a millionaire? ==========================================\n\n";
-    std::cout << '\n';
-    std::cout << "                                                   Choose category:\n\n";
-    std::cout << "                                                        1. Life\n";
-    std::cout << "                                                        2. History\n";
-    std::cout << "                                                        3. Cinema\n";
-    std::cout << "                                                        4. Sports\n";
-    std::cout << "                                                        5. Politics\n\n";
-    std::cout << "                                                        9. All categories\n\n";
-    std::cout << "                                                 0. For returning to Main Menu\n\n";
+  printNewLines(6);
+  std::cout << "  ========================================== Who wants to be a "
+               "millionaire? ==========================================\n\n";
+  std::cout << '\n';
+  std::cout << "                                                   Choose "
+               "category:\n\n";
+  std::cout
+      << "                                                        1. Life\n";
+  std::cout
+      << "                                                        2. History\n";
+  std::cout
+      << "                                                        3. Cinema\n";
+  std::cout
+      << "                                                        4. Sports\n";
+  std::cout << "                                                        5. "
+               "Politics\n\n";
+  std::cout << "                                                        9. All "
+               "categories\n\n";
+  std::cout << "                                                 0. For "
+               "returning to Main Menu\n\n";
 
-    printBorder();
-    std::cout << "Enter your choice: ";
-}
-
-std::string NewGame::selectTopic(char &choice) {
-    if (choice == '1') {
-        //std::string topic = "Life.txt";
-        randomTopic = false;
-        return "Life.txt";
-    }
-    else if (choice == '2') {
-        //std::string topic = "History.txt";
-        randomTopic = false;
-        return "History.txt";
-    }
-    else if (choice == '3') {
-        //std::string topic = "Cinema.txt";
-        randomTopic = false;
-        return "Cinema.txt";
-    }
-    else if (choice == '4') {
-        //std::string topic = "Sports.txt";
-        randomTopic = false;
-        return "Sports.txt";
-    }
-    else if (choice == '5') {
-        //std::string topic = "Politics.txt";
-        randomTopic = false;
-        return "Politics.txt";
-    }
-    else if (choice == '9') {
-        randomTopic = true;
-        //std::string topic = { '\0' };
-        return "\0";
-    }
-    else {
-        system("cls");//clearing console
-        return "-1";
-    }
+  printBorder();
+  std::cout << "Enter your choice: ";
 }
