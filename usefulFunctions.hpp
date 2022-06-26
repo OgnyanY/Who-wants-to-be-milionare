@@ -13,15 +13,16 @@ void firstTwoDigitsIDGenerator(int level, char questionID[6]);
 
 void lastFiveDigitsIDGenerator(int topicChoice, int number, char fullQuestionID[]);
 
-void FillingEmptySpace(std::string option, int optionSize);
+void FillingEmptySpace(std::string &option, int optionSize);
 
 void printBorder();
 
-char validInput(const std::string& str);
+char validInput(const std::string &str);
 
-void ValidInputForWords(const char enteringWord[], const char possibleWord[], int MessageSize, bool& incorrectValidation);
+void
+ValidInputForWords(const char enteringWord[], const char possibleWord[], int MessageSize, bool &incorrectValidation);
 
-void AddAdditonalCharacters(char OGstring[], int& OGlength, char addstr1[]);
+void AddAdditonalCharacters(char OGstring[], int &OGlength, char addstr1[]);
 
 void ProperNewLineToString(char question[]);
 

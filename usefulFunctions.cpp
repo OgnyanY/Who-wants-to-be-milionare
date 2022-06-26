@@ -77,9 +77,7 @@ void ValidInputForWords(const char enteringWord[], const char possibleWord[],
 //   }
 //   OGlength = StrLength(OGstring);
 // }
-void FillingEmptySpace(
-    std::string option,
-    int optionSize) {  // filling the space of an option for 50/50 joker
+void FillingEmptySpace(std::string &option, int optionSize) {  // filling the space of an option for 50/50 joker
   for (int i = 0; i < optionSize; i++) {
     option[i] = ' ';
   }

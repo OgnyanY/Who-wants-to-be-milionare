@@ -12,14 +12,14 @@
 
 class MainMenuPage {
 public:
-void createMainMenuPage();
+    void createMainMenuPage();
 
 private:
     char choice = '\0';
 
     void printMainMenuPage();
+
     void makeChoiceInMenu(char menuChoice);
 };
-
 
 #endif //WHO_WANTS_TO_BE_MILIONARE_MAINMENUPAGE_HPP

@@ -9,12 +9,11 @@
 #include <vector>
 
 #include "usefulFunctions.hpp"
-#include "newGame.hpp"
 
 class FiftyFiftyJoker {
 public:
-    void fiftyFifty(char correctAnswer, std::string &option1, std::string &option2,
-                    std::string &option3, std::string &option4);
+    void useJoker(char correctAnswer, std::string &option1, std::string &option2,
+                  std::string &option3, std::string &option4);
 
 private:
     int findCorrectAnswerIndex(char correctAnswer, std::string &option1, std::string &option2,
@@ -30,6 +29,5 @@ private:
     void takeNewOptions(std::string &option1, std::string &option2,
                         std::string &option3, std::string &option4, std::vector<std::string> &options);
 };
-
 
 #endif //WHO_WANTS_TO_BE_MILIONARE_FIFTYFIFTYJOKER_HPP

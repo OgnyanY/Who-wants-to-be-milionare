@@ -1,7 +1,7 @@
 #include "fiftyFiftyJoker.hpp"
 
-void FiftyFiftyJoker::fiftyFifty(char correctAnswer, std::string &option1, std::string &option2,
-                                 std::string &option3, std::string &option4) {
+void FiftyFiftyJoker::useJoker(char correctAnswer, std::string &option1, std::string &option2,
+                               std::string &option3, std::string &option4) {
 
     std::vector<std::string> options = {option1, option2, option3, option4};
 
@@ -57,9 +57,8 @@ void FiftyFiftyJoker::eraseTwoWrongAnswers(int &firstDeleteOptionIndex, int &sec
     }
 }
 
-void
-FiftyFiftyJoker::takeNewOptions(std::string &option1, std::string &option2, std::string &option3, std::string &option4,
-                                std::vector<std::string> &options) {
+void FiftyFiftyJoker::takeNewOptions(std::string &option1, std::string &option2,
+                                     std::string &option3, std::string &option4, std::vector<std::string> &options) {
     option1 = options[0];
     option2 = options[1];
     option3 = options[2];
