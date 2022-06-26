@@ -50,6 +50,25 @@ char validInput(const std::string& str) {
   return number;
 }
 
+int validInput(const std::vector<int>& arr){
+    bool validChoice = false;
+    int number;
+    do {
+        std::cin >> number;
+        for (int i = 0; i < arr.size(); i++) {
+            if (number != arr[i]) {//validation check
+                continue;
+            }
+            validChoice = true;
+            break;
+        }
+        if(!validChoice){
+            std::cout << "Invalid choice!\n";
+        }
+    } while (!validChoice);
+    return number;
+}
+
 void ValidInputForWords(const char enteringWord[], const char possibleWord[],
                         int MessageSize, bool& incorrectValidation) {
   for (int i = 0; i < MessageSize; i++) {

@@ -2,6 +2,7 @@
 #define WHO_WANTS_TO_BE_MILIONARE_USEFULFUNCTIONS_HPP
 
 #include <string>
+#include <vector>
 
 char levelFromIntToChar(int level);
 
@@ -19,8 +20,9 @@ void printBorder();
 
 char validInput(const std::string &str);
 
-void
-ValidInputForWords(const char enteringWord[], const char possibleWord[], int MessageSize, bool &incorrectValidation);
+int validInput(const std::vector<int>& arr);
+
+void ValidInputForWords(const char enteringWord[], const char possibleWord[], int MessageSize, bool &incorrectValidation);
 
 void AddAdditonalCharacters(char OGstring[], int &OGlength, char addstr1[]);
 
