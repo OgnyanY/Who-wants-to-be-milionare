@@ -6,8 +6,7 @@
 
 using namespace std;
 
-char levelFromIntToChar(
-    int level) {  // turning level number into number of ID    example: ID:01
+char levelFromIntToChar(int level) {  // turning level number into number of ID    example: ID:01
   return '0' + level;
 }
 void printNewLines(int number) {
