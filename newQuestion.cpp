@@ -14,26 +14,19 @@ void newQuestion::EnteringNewQuestion() {
     int diffChoice = selectingDifficultyOfQuestion(numberOfQuestionChoices);
     system("cls");//clearing console
 
-    //char questionID[6] = {'I', 'D', ':', '\0', '\0'};//ID validation prototype
-    //IDLookingGenerator(diffChoice, questionID);//creating the front numbers
     ID questionID;
     questionID.firstTwoDigitsIDGenerator(diffChoice);
 
     int timesQuestionExists = 0;
     //searching how many times there is a question with this number  example: 2.
-    SearchHowManyPossibleQuestions(topic, timesQuestionExists,questionID);
+    searchHowManyPossibleQuestions(topic, timesQuestionExists, questionID.getID());
 
-    //char fullQuestionID[12] = {'\0'};
-    //CopyStr(questionID, fullQuestionID);
     int additionalQuestion = timesQuestionExists + 1;//the last 3 digits of the new question id
 
-    //FullIDCreatingGenerator(categoryChoice, additionalQuestion, fullQuestionID);//creating the back numbers
     questionID.lastFiveDigitsIDGenerator(categoryChoice,additionalQuestion);
 
     Question question;
-    writingNewQuestionAnswers(question.getQuestion(), question.firstAnswer, question.secondAnswer,
-                              question.thirdAnswer, question.forthAnswer, question.getCorrectAnswer(),
-                              diffChoice, questionID.getID());
+    writingNewQuestionAnswers(question, diffChoice, questionID.getID());
 
     question.setQuestion(questionCheckNewLine(question.getQuestion()));//checking for new line
 
@@ -70,68 +63,20 @@ void newQuestion::enteringNewInfoIntoFile(const std::string &fileName, const std
     NewQuestion << "D) " << option4 << '\n' << '\n';
     NewQuestion << correctAnswer << '\n';
 
-    NewQuestion.close();//closing file
+    NewQuestion.close();
 }
 
-void newQuestion::writingNewQuestionAnswers(std::string question,
-                                            std::string option1, std::string option2,
-                                            std::string option3, std::string option4,
-                                            char correctAnswer, int &diffChoice, const std::string &fullQuestionID) {
-    printNewLines(6);
-    std::cout << "  ========================================== Who wants to be a millionaire? ==========================================\n\n";
-    std::cout << "  Please write your question below:  (please dont forget to add '?' at the end)\n  (question can hold up to 1000 symbols)\n";
-    std::cout << std::endl;
-    printBorder();
-    std::cout << "\n  " << diffChoice << ". ";
-    if (std::cin.peek() == '\n') {//using this to catch the new line symbol from the buffer, that's caused because of previous validation of cin
-        std::cin.get();
-    }
-    //std::cin.getline(question, 1000, '?');
-    std::getline(std::cin,question,'?');
+void newQuestion::writingNewQuestionAnswers(Question &question, int &diffChoice, std::string fullQuestionID) {
 
-    system("cls");//clearing console
+    writeQuestionGuide(diffChoice,question);
 
-    printNewLines(6);
-    std::cout << "  ========================================== Who wants to be a millionaire? ==========================================\n\n";
-    std::cout << "  Please write your optional answers below:  (after completing the answer, press 'Enter' to continue to the next one)\n";
-    std::cout << "  (each answer can hold up to 100 symbols)\n";
-    std::cout << std::endl;
-    printBorder();
-    char garbage[3] = {'\0'};//using this to suck the incoming new line from entering question
-    std::cin.getline(garbage, 2, '\n');
-    std::cout << "\n  " << "A) ";
-    //std::cin.getline(option1, 100, '\n');
-    std::getline(std::cin, option1, '\n');
-    std::cout << "  " << "B) ";
-    //std::cin.getline(option2, 100, '\n');
-    std::getline(std::cin, option2, '\n');
-    std::cout << "  " << "C) ";
-    //std::cin.getline(option3, 100, '\n');
-    std::getline(std::cin, option3, '\n');
-    std::cout << "  " << "D) ";
-    //std::cin.getline(option4, 100, '\n');
-    std::getline(std::cin, option4, '\n');
+    writeAnswersGuide(question.firstAnswer, question.secondAnswer,
+                      question.thirdAnswer, question.forthAnswer);
 
+    printQuestionPreview(question.getQuestion(),question.firstAnswer, question.secondAnswer,
+                         question.thirdAnswer, question.forthAnswer,question.getCorrectAnswer(),diffChoice,fullQuestionID);
 
-    system("cls");//clearing console
-
-    printNewLines(6);
-    std::cout << "  ========================================== Who wants to be a millionaire? ==========================================\n\n";
-    std::cout << "  ID of question: " << fullQuestionID << std::endl;
-    std::cout << "  " << diffChoice << ". " << question << "?\n\n";
-    std::cout << "  A) " << option1 << std::endl;
-    std::cout << "  B) " << option2 << std::endl;
-    std::cout << "  C) " << option3 << std::endl;
-    std::cout << "  D) " << option4 << std::endl;
-
-    std::cout << std::endl;
-    printBorder();
-    std::cout << "  Which one is the correct answer? : (A, B, C or D)";
-    do {
-        std::cin >> correctAnswer;
-    } while (correctAnswer != 'A' && correctAnswer != 'B' && correctAnswer != 'C' && correctAnswer != 'D');
-
-    system("cls");//clearing console
+    writeCorrectAnswerGuide(question);
 }
 
 int newQuestion::selectingDifficultyOfQuestion(std::vector<int> &numberOfQuestionChoices) {
@@ -195,14 +140,15 @@ std::string newQuestion::selectTopic(char &choice) {
     }
 }
 
-void SearchHowManyPossibleQuestions(const std::string &nameOfFile, int &timesQuestionExists, std::string questionID) {
-    std::ifstream questionFile(nameOfFile);  //opening file
-    char printingString[6] = { '\0' }; //creating an char array, that will compare later
+void newQuestion::searchHowManyPossibleQuestions(const std::string &nameOfFile, int &timesQuestionExists,
+                                                 std::string questionID) {
+    std::ifstream questionFile(nameOfFile);
+    std::string printingString; //creating a char array, that will compare later
     const int SIZE_OF_ROW = 1000;
     char gettingLine[SIZE_OF_ROW];
     while (questionFile.getline(gettingLine, SIZE_OF_ROW)) {//getting the whole line
         for (int i = 0; i < 6; i++) {
-            printingString[i] = gettingLine[i];//rewriting the first 5 simbols to a new char array
+            printingString[i] = gettingLine[i];//rewriting the first 5 symbols to a new char array
         }
         printingString[5] = '\0';//adding manual terminating zero to the last element
 
@@ -218,5 +164,77 @@ void SearchHowManyPossibleQuestions(const std::string &nameOfFile, int &timesQue
         }
     }
     questionFile.close();//closing file
+}
+
+void newQuestion::writeQuestionGuide(int diffChoice, Question &question) {
+    printNewLines(6);
+    std::cout << "  ========================================== Who wants to be a millionaire? ==========================================\n\n";
+    std::cout << "  Please write your question below:  (please dont forget to add '?' at the end)\n  (question can hold up to 1000 symbols)\n";
+    std::cout << '\n';
+    printBorder();
+    std::cout << "\n  " << diffChoice << ". ";
+
+    //using this to catch the new line symbol from the buffer,
+    // that's caused because of previous validation of cin
+    if (std::cin.peek() == '\n') {
+        std::cin.get();
+    }
+
+    std::string newQuestion = question.getQuestion();
+    std::getline(std::cin,newQuestion,'?');
+    question.setQuestion(newQuestion);
+
+    system("cls");//clearing console
+}
+
+void newQuestion::writeAnswersGuide(std::string &option1, std::string &option2,
+                                    std::string &option3, std::string &option4) {
+    printNewLines(6);
+    std::cout << "  ========================================== Who wants to be a millionaire? ==========================================\n\n";
+    std::cout << "  Please write your optional answers below:  (after completing the answer, press 'Enter' to continue to the next one)\n";
+    std::cout << "  (each answer can hold up to 100 symbols)\n";
+    std::cout << '\n';
+    printBorder();
+    char garbage[3] = {'\0'};//using this to suck the incoming new line from entering question
+    std::cin.getline(garbage, 2, '\n');
+
+    std::cout << "\n  " << "A) ";
+    std::getline(std::cin, option1, '\n');
+    std::cout << "  " << "B) ";
+    std::getline(std::cin, option2, '\n');
+    std::cout << "  " << "C) ";
+    std::getline(std::cin, option3, '\n');
+    std::cout << "  " << "D) ";
+    std::getline(std::cin, option4, '\n');
+
+    system("cls");//clearing console
+}
+
+void newQuestion::printQuestionPreview(const std::string& question,
+                                       const std::string& option1, const std::string& option2,
+                                       const std::string& option3, const std::string& option4,
+                                       char correctAnswer, int &diffChoice, const std::string &fullQuestionID) {
+    printNewLines(6);
+    std::cout << "  ========================================== Who wants to be a millionaire? ==========================================\n\n";
+    std::cout << "  ID of question: " << fullQuestionID << '\n';
+    std::cout << "  " << diffChoice << ". " << question << "?\n\n";
+    std::cout << "  A) " << option1 << '\n';
+    std::cout << "  B) " << option2 << '\n';
+    std::cout << "  C) " << option3 << '\n';
+    std::cout << "  D) " << option4 << '\n';
+
+    std::cout << '\n';
+    printBorder();
+}
+
+void newQuestion::writeCorrectAnswerGuide(Question &question) {
+    std::cout << "  Which one is the correct answer? : (A, B, C or D)";
+    char correctAnswer = question.getCorrectAnswer();
+    do {
+        std::cin >> correctAnswer;
+    } while (correctAnswer != 'A' && correctAnswer != 'B' && correctAnswer != 'C' && correctAnswer != 'D');
+    question.setCorrectAnswer(correctAnswer);
+
+    system("cls");//clearing console
 }
 
