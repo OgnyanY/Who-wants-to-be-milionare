@@ -21,32 +21,38 @@ public:
 private:
     void printSuccessfulNewQuestion();
 
-    void enteringNewInfoIntoFile(const std::string &fileName, const std::string &question,
-                                 const std::string &option1, const std::string &option2,
-                                 const std::string &option3, const std::string &option4,
-                                 char correctAnswer, int &numberOfQuestion, const std::string &fullID);
+    void enteringNewInfoIntoFile(const std::string &fileName, const Question &question,
+                                 int &numberOfQuestion, const std::string &fullID);
 
     void writingNewQuestionAnswers(Question &question, int &diffChoice, std::string fullQuestionID);
 
     int selectingDifficultyOfQuestion(std::vector<int> &numberOfQuestionChoices);
+
     void printSelectingDifficultyOfQuestion();
 
     char selectingCategory(const std::string &choiceSelection);
+
     void printSelectingCategory();
 
     std::string selectTopic(char &choice);
+
+    void generateID(ID &questionID, int diffChoice, const std::string &topic, char categoryChoice);
+
+    void generateQuestion(Question &question, ID &questionID, int diffChoice, const std::string &topic);
+
     void searchHowManyPossibleQuestions(const std::string &nameOfFile, int &timesQuestionExists,
                                         std::string questionID);
 
     void writeQuestionGuide(int diffChoice, Question &question);
-    void writeAnswersGuide(std::string &option1, std::string &option2,
-                           std::string &option3, std::string &option4);
-    void printQuestionPreview(const std::string& question,
-                              const std::string& option1, const std::string& option2,
-                              const std::string& option3, const std::string& option4,
-                              char correctAnswer, int &diffChoice, const std::string &fullQuestionID);
+
+    void writeAnswersGuide(Question &question);
+
+    void printQuestionPreview(const Question &question, int &diffChoice, const std::string &fullQuestionID);
+
     void writeCorrectAnswerGuide(Question &question);
 
+    std::string choiceSelection = {'1', '2', '3', '4', '5', '0'};
+    std::vector<int> numberOfQuestionChoices = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 };
 
 
