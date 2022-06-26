@@ -38,6 +38,12 @@ void Question::loadQuestionAndAnswers(const std::string nameOfFile,
 
 char Question::getCorrectAnswer() const { return correctAnswer[0]; }
 
+std::string Question::getQuestion() const { return question; }
+
+void Question::setQuestion(std::string newQuestion) {
+    question = newQuestion;
+}
+
 std::string Question::correctFullAnswer() const {
   if (correctAnswer[0] == firstAnswer[0]) {
     return firstAnswer;
@@ -49,3 +55,6 @@ std::string Question::correctFullAnswer() const {
     return forthAnswer;
   }
 }
+
+
+

@@ -9,6 +9,8 @@ class Question {
   void printQuestionAndAnswers();
   void loadQuestionAndAnswers(const std::string nameOfFile, const std::string ID);
   char getCorrectAnswer() const;
+  std::string getQuestion() const;
+  void setQuestion(std::string newQuestion);
   std::string correctFullAnswer() const;
 
     std::string firstAnswer;
