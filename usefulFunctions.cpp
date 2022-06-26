@@ -140,15 +140,13 @@ void FillingEmptySpace(std::string &option, int optionSize) {  // filling the sp
 //   printNewLines(6);
 // }
 
-// void QuestionCheckNewLine(
-//     char question[]) {  // checking if in the inserted new question somewhere
-//     is
-//                         // a symbol for new line, if yes turns it into empty
-//                         // space
-//   int sizeQuestion = StrLength(question);
-//   for (int i = 0; i < sizeQuestion; i++) {
-//     if (question[i] == '\n') {
-//       question[i] = ' ';
-//     }
-//   }
-// }
+std::string questionCheckNewLine(std::string question) {  // checking if in the inserted new question somewhere is
+                                                          // a symbol for new line, if yes turns it into empty
+                                                          // space
+   for (int i = 0; i < question.size(); i++) {
+     if (question[i] == '\n') {
+       question[i] = ' ';
+     }
+   }
+    return question;
+}

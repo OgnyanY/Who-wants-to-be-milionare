@@ -10,10 +10,6 @@ void printNewLines(int number);
 
 void printEmptySpaces(int number);
 
-void firstTwoDigitsIDGenerator(int level, char questionID[6]);
-
-void lastFiveDigitsIDGenerator(int topicChoice, int number, char fullQuestionID[]);
-
 void FillingEmptySpace(std::string &option, int optionSize);
 
 void printBorder();
@@ -30,6 +26,6 @@ void ProperNewLineToString(char question[]);
 
 void ThanksForPlaying();
 
-void QuestionCheckNewLine(char question[]);
+std::string questionCheckNewLine(std::string question);
 
 #endif //WHO_WANTS_TO_BE_MILIONARE_USEFULFUNCTIONS_HPP
