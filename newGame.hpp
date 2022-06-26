@@ -5,6 +5,9 @@
 
 #include "id.hpp"
 #include "question.hpp"
+#include "fiftyFiftyJoker.hpp"
+#include "callFriendJoker.hpp"
+#include "audienceHelpJoker.hpp"
 
 
 class NewGame {
@@ -36,7 +39,7 @@ class NewGame {
   int level;
   bool availableFiftyFiftyJoker;
   bool availableAudienceHelpJoker;
-  bool availableFriendCallJoker;
+  bool availableCallFriendJoker;
 
   bool randomTopic;
   int chosenTopic;
@@ -53,4 +56,8 @@ class NewGame {
   Question currentQuestion;
 
   std::string possibleAnswers;
+
+  CallFriendJoker callFriendJoker;
+  AudienceHelpJoker audienceHelpJoker;
+  FiftyFiftyJoker fiftyFiftyJoker;
 };

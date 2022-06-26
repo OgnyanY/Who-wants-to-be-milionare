@@ -4,7 +4,7 @@ NewGame::NewGame()
     : level(1),
       availableFiftyFiftyJoker(true),
       availableAudienceHelpJoker(true),
-      availableFriendCallJoker(true),
+      availableCallFriendJoker(true),
       randomTopic(false),
       chosenTopic(0),
       gameLost(false),
@@ -72,7 +72,7 @@ void NewGame::loadAndPrintQuestionAndAnswers() {
 
 bool NewGame::availableJokers() {
   return (availableFiftyFiftyJoker || availableAudienceHelpJoker ||
-          availableFriendCallJoker);
+          availableCallFriendJoker);
 }
 
 bool NewGame::askToUseJoker() {
@@ -91,7 +91,7 @@ void NewGame::showAvailableJokers(std::string jokersToUse) {
     outputString += "press Y for help from the audience";
     jokersToUse += "Y";
   }
-  if (availableFriendCallJoker) {
+  if (availableCallFriendJoker) {
     outputString += "press Z for calling a friend";
     jokersToUse += "Z";
   }
@@ -103,24 +103,34 @@ void NewGame::showAvailableJokers(std::string jokersToUse) {
 
 void NewGame::useDesiredJoker(char decision) {
   if (decision == 'X') {
-    // activate 50/50 joker
-    // clear screen
-    // print the question again
-    // proceed with giving the answer
+      fiftyFiftyJoker.useJoker(currentQuestion.getCorrectAnswer(), currentQuestion.firstAnswer,
+                            currentQuestion.secondAnswer, currentQuestion.thirdAnswer,
+                            currentQuestion.forthAnswer);
+
+      system("cls");//clearing console
+      currentQuestion.printQuestionAndAnswers();
+
+      availableFiftyFiftyJoker = false;
+
   } else if (decision == 'Y') {
-    // activate call a friend joker
-    // clear screen
-    // print the question again with message from friend
-    // proceed with giving the answer
+      callFriendJoker.useJoker("ABCD",currentQuestion.getCorrectAnswer(), level);
+
+      system("cls");//clearing console
+      currentQuestion.printQuestionAndAnswers();
+
+      availableCallFriendJoker = false;
+
   } else if (decision == 'Z') {
-    // activate ask the audience joker
-    // clear screen
-    // print the question again with message from the audience
-    // proceed with giving the answer
+      audienceHelpJoker.useJoker("ABCD",currentQuestion.getCorrectAnswer(), level);
+
+      system("cls");//clearing console
+      currentQuestion.printQuestionAndAnswers();
+
+      availableAudienceHelpJoker = false;
+
   } else {
-    // clear screen
-    // print the question again
-    // proceed with giving the answer
+      system("cls");//clearing console
+      currentQuestion.printQuestionAndAnswers();
   }
 }
 

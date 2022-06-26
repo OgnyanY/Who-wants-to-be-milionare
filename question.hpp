@@ -11,12 +11,13 @@ class Question {
   char getCorrectAnswer() const;
   std::string correctFullAnswer() const;
 
+    std::string firstAnswer;
+    std::string secondAnswer;
+    std::string thirdAnswer;
+    std::string forthAnswer;
  private:
   std::string ID_of_question;
   std::string question;
-  std::string firstAnswer;
-  std::string secondAnswer;
-  std::string thirdAnswer;
-  std::string forthAnswer;
+
   std::string correctAnswer;
 };
