@@ -8,24 +8,23 @@
 #include <string>
 
 #include "usefulFunctions.hpp"
-#include "newGame.hpp"
 
 class CallFriendJoker {
 public:
-    void useJoker(std::string &possibleAnswers, char &correctAnswer, int &level);
+    virtual void useJoker(std::string possibleAnswers, char correctAnswer, int level);
 
 protected:
-    int getIndexOfCorrectAnswer(std::string &possibleAnswers, char &correctAnswer);
+    virtual int getIndexOfCorrectAnswer(std::string &possibleAnswers, char &correctAnswer);
 
 private:
-    int calculatePercentChanceOfLying(int &level);
+    virtual int calculatePercentChanceOfLying(int &level);
 
-    void giveAnswerToQuestion(int &randomNumber, int &percentChanceOfLying,
+    virtual void giveAnswerToQuestion(int &randomNumber, int &percentChanceOfLying,
                                       std::string &possibleAnswers, char &correctAnswer);
 
-    void giveWrongAnswer(std::string &possibleAnswers, char &correctAnswer);
+    virtual void giveWrongAnswer(std::string &possibleAnswers, char &correctAnswer);
 
-    void giveCorrectAnswer(char &correctAnswer);
+    virtual void giveCorrectAnswer(char &correctAnswer);
 };
 
 

@@ -1,6 +1,6 @@
 #include "callFriendJoker.hpp"
 
-void CallFriendJoker::useJoker(std::string &possibleAnswers, char &correctAnswer, int &level) {
+void CallFriendJoker::useJoker(std::string possibleAnswers, char correctAnswer, int level) {
     srand(time(nullptr));//setting the seed, from which the randomizer will randomise
     int currentMaxPercentage = 100;
     int percentChanceOfLying = calculatePercentChanceOfLying(level);

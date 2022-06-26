@@ -8,21 +8,13 @@
 #include <string>
 
 #include "usefulFunctions.hpp"
-#include "newGame.hpp"
+#include "callFriendJoker.hpp"
 
-class AudienceHelpJoker {
-public:
-    void useJoker(std::string &possibleAnswers, char &correctAnswer, int &level);
+class AudienceHelpJoker :public CallFriendJoker {
 private:
-    int calculatePercentChanceOfLying(int &level);
+    void giveWrongAnswer(std::string &possibleAnswers, char &correctAnswer) override;
 
-    void giveAnswerToQuestion(int &randomNumber, int &percentChanceOfLying, std::string &possibleAnswers, char &correctAnswer);
-
-    int getIndexOfCorrectAnswer(std::string &possibleAnswers, char &correctAnswer);
-
-    void giveWrongAnswer(std::string &possibleAnswers, char &correctAnswer);
-
-    void giveCorrectAnswer(char &correctAnswer);
+    void giveCorrectAnswer(char &correctAnswer) override;
 };
 
 
