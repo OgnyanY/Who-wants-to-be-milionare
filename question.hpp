@@ -8,10 +8,13 @@ class Question {
   Question() = default;
   void printQuestionAndAnswers();
   void loadQuestionAndAnswers(const std::string nameOfFile, const std::string ID);
+  std::string correctFullAnswer() const;
+
   char getCorrectAnswer() const;
+  void setCorrectAnswer(char newAnswer);
   std::string getQuestion() const;
   void setQuestion(std::string newQuestion);
-  std::string correctFullAnswer() const;
+
 
     std::string firstAnswer;
     std::string secondAnswer;

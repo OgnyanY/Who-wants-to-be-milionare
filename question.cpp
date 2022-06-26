@@ -36,25 +36,27 @@ void Question::loadQuestionAndAnswers(const std::string nameOfFile,
   currentLine.close();
 }
 
+std::string Question::correctFullAnswer() const {
+    if (correctAnswer[0] == firstAnswer[0]) {
+        return firstAnswer;
+    } else if (correctAnswer[0] == secondAnswer[0]) {
+        return secondAnswer;
+    } else if (correctAnswer[0] == thirdAnswer[0]) {
+        return thirdAnswer;
+    } else {
+        return forthAnswer;
+    }
+}
+
 char Question::getCorrectAnswer() const { return correctAnswer[0]; }
+
+void Question::setCorrectAnswer(char newAnswer) { correctAnswer = newAnswer; }
 
 std::string Question::getQuestion() const { return question; }
 
-void Question::setQuestion(std::string newQuestion) {
-    question = newQuestion;
-}
+void Question::setQuestion(std::string newQuestion) { question = newQuestion; }
 
-std::string Question::correctFullAnswer() const {
-  if (correctAnswer[0] == firstAnswer[0]) {
-    return firstAnswer;
-  } else if (correctAnswer[0] == secondAnswer[0]) {
-    return secondAnswer;
-  } else if (correctAnswer[0] == thirdAnswer[0]) {
-    return thirdAnswer;
-  } else {
-    return forthAnswer;
-  }
-}
+
 
 
 
