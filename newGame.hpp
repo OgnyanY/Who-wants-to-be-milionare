@@ -33,7 +33,10 @@ class NewGame {
   void printGameOver();
   bool keepingMoneyQuestion();
   void keepMoneyMessage();
-  void validatingAnswer();//
+  void validatingAnswer();
+
+  void printPickATopic();
+  std::string selectTopic(char &choice);
 
  public://private:
   int level;

@@ -10,7 +10,25 @@ NewGame::NewGame()
       gameLost(false),
       possibleAnswers("ABCD") {}
 
-// int NewGame::pickATopic() {}  // TODO
+int NewGame::pickATopic() {
+    printPickATopic();
+
+    std::string possibleChoices = { '1', '2', '3', '4', '5', '9', '0' };
+    char choice = validInput(possibleChoices);
+
+    if(choice == 0){//return to main menu
+        return 0;
+    }
+
+    randomTopic = false;//adding option to choose all categories
+
+    std::string topic = selectTopic(choice);
+
+    ///StartNewGame(topic, randomTopic);
+
+    return choice - '0';
+
+}
 
 void NewGame::startGame() {
   do {
@@ -230,4 +248,58 @@ void NewGame::validatingAnswer() {
     std::system("pause");
     std::system("cls");
   }
+}
+
+void NewGame::printPickATopic() {
+    printNewLines(6);
+    std::cout << "  ========================================== Who wants to be a millionaire? ==========================================\n\n";
+    std::cout << '\n';
+    std::cout << "                                                   Choose category:\n\n";
+    std::cout << "                                                        1. Life\n";
+    std::cout << "                                                        2. History\n";
+    std::cout << "                                                        3. Cinema\n";
+    std::cout << "                                                        4. Sports\n";
+    std::cout << "                                                        5. Politics\n\n";
+    std::cout << "                                                        9. All categories\n\n";
+    std::cout << "                                                 0. For returning to Main Menu\n\n";
+
+    printBorder();
+    std::cout << "Enter your choice: ";
+}
+
+std::string NewGame::selectTopic(char &choice) {
+    if (choice == '1') {
+        //std::string topic = "Life.txt";
+        randomTopic = false;
+        return "Life.txt";
+    }
+    else if (choice == '2') {
+        //std::string topic = "History.txt";
+        randomTopic = false;
+        return "History.txt";
+    }
+    else if (choice == '3') {
+        //std::string topic = "Cinema.txt";
+        randomTopic = false;
+        return "Cinema.txt";
+    }
+    else if (choice == '4') {
+        //std::string topic = "Sports.txt";
+        randomTopic = false;
+        return "Sports.txt";
+    }
+    else if (choice == '5') {
+        //std::string topic = "Politics.txt";
+        randomTopic = false;
+        return "Politics.txt";
+    }
+    else if (choice == '9') {
+        randomTopic = true;
+        //std::string topic = { '\0' };
+        return "\0";
+    }
+    else {
+        system("cls");//clearing console
+        return "-1";
+    }
 }
