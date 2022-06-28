@@ -124,13 +124,12 @@ void NewGame::useDesiredJoker(char decision) {
     system("cls");  // clearing console
     currentQuestion.printQuestionAndAnswers();
   } else if (decision == 'Y') {
-    availableCallFriendJoker = false;
-    callFriendJoker.useJoker("ABCD", currentQuestion.getCorrectAnswer(), level);
-
-  } else if (decision == 'Z') {
     availableAudienceHelpJoker = false;
     audienceHelpJoker.useJoker("ABCD", currentQuestion.getCorrectAnswer(),
                                level);
+  } else if (decision == 'Z') {
+    availableCallFriendJoker = false;
+    callFriendJoker.useJoker("ABCD", currentQuestion.getCorrectAnswer(), level);
   } else {
     system("cls");  // clearing console
     currentQuestion.printQuestionAndAnswers();
