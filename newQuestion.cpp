@@ -41,7 +41,7 @@ void NewQuestion::enteringNewInfoIntoFile(const std::string &fileName, const Que
     NewQuestion << "B) " << question.secondAnswer << '\n';
     NewQuestion << "C) " << question.thirdAnswer << '\n';
     NewQuestion << "D) " << question.forthAnswer << '\n' << '\n';
-    NewQuestion << question.getCorrectAnswer() << '\n';
+    NewQuestion << question.getCorrectAnswer();
 
     NewQuestion.close();
 }
@@ -126,7 +126,7 @@ void NewQuestion::generateID(ID &questionID,int diffChoice,const std::string& to
 
     int additionalQuestion = questionID.numberOfVariationsOfAQuestion(topic) + 1;
 
-    questionID.lastFiveDigitsIDGenerator(categoryChoice,additionalQuestion);
+    questionID.lastFiveDigitsIDGenerator(categoryChoice - '0',additionalQuestion);
 }
 
 void NewQuestion::generateQuestion(Question &question, ID &questionID, int diffChoice,
