@@ -34,10 +34,11 @@ class NewGame {
   bool keepingMoneyQuestion();
   void keepMoneyMessage();
   void validatingAnswer();
+  void winningBigPrizeMessage();
 
   void printPickATopic();
 
- public://private:
+private:
   int level;
   bool availableFiftyFiftyJoker;
   bool availableAudienceHelpJoker;

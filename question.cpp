@@ -7,7 +7,7 @@ void Question::printQuestionAndAnswers() {
             << secondAnswer << '\n'
             << thirdAnswer << '\n'
             << forthAnswer << '\n';
-  std::cout << '\n' << correctAnswer;
+  std::cout << '\n';
 }
 
 void Question::loadQuestionAndAnswers(const std::string nameOfFile,

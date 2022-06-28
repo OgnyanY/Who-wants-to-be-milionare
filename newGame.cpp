@@ -42,7 +42,7 @@ void NewGame::startGame() {
     }
 
     validatingAnswer();
-  } while (!gameLost && level < 15);
+  } while (!gameLost && level < 16);
   std::system("cls");
 }
 
@@ -223,6 +223,12 @@ void NewGame::validatingAnswer() {
   std::system("cls");
   if (checkIfAnswerIsCorrect(answer)) {
     level++;
+    if (level == 16) {
+      std::system("cls");
+      winningBigPrizeMessage();
+      std::system("pause");
+      return;
+    }
     if (keepingMoneyQuestion()) {
       gameLost = true;
       keepMoneyMessage();
@@ -259,4 +265,16 @@ void NewGame::printPickATopic() {
 
   printBorder();
   std::cout << "Enter your choice: ";
+}
+
+void NewGame::winningBigPrizeMessage() {
+  printNewLines(6);
+  std::cout << "  ========================================== Who wants to be a "
+               "millionaire? ==========================================\n\n";
+  std::cout << '\n';
+  std::cout << "                                 Congratulations, you have won "
+               "the big prize of 1,000,000$ \n\n";
+  std::cout << "                                                  Thanks for "
+               "playing!";
+  printBorder();
 }
