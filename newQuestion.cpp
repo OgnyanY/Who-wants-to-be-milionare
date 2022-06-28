@@ -4,17 +4,17 @@ void NewQuestion::EnteringNewQuestion() {
     char categoryChoice = selectingCategory(choiceSelection);
 
     std::string topic = selectTopic(categoryChoice);
-    if(topic == "return"){
+    if (topic == "return") {
         return;
     }
 
     int diffChoice = selectingDifficultyOfQuestion(numberOfQuestionChoices);
 
     ID questionID;
-    generateID(questionID,diffChoice,topic,categoryChoice);
+    generateID(questionID, diffChoice, topic, categoryChoice);
 
     Question question;
-    generateQuestion(question,questionID,diffChoice,topic);
+    generateQuestion(question, questionID, diffChoice, topic);
 
     printSuccessfulNewQuestion();
 }
@@ -27,15 +27,15 @@ void NewQuestion::printSuccessfulNewQuestion() {
     std::cout << '\n';
     printBorder();
     std::cout << '\n';
-    system("pause");//pausing console
-    system("cls");//clearing console
+    system("pause");
+    system("cls");
 }
 
 void NewQuestion::enteringNewInfoIntoFile(const std::string &fileName, const Question &question,
                                           int &numberOfQuestion, const std::string &fullID) {
-    std::ofstream NewQuestion(fileName, std::ios::app);//append, starts the typing from the end of the file
+    std::ofstream NewQuestion(fileName, std::ios::app);
 
-    NewQuestion << '\n' << '\n' << fullID << '\n';//inserting each string that has been saved
+    NewQuestion << '\n' << '\n' << fullID << '\n';
     NewQuestion << numberOfQuestion << ". " << question.getQuestion() << "?" << '\n';
     NewQuestion << "A) " << question.firstAnswer << '\n';
     NewQuestion << "B) " << question.secondAnswer << '\n';
@@ -48,11 +48,11 @@ void NewQuestion::enteringNewInfoIntoFile(const std::string &fileName, const Que
 
 void NewQuestion::writingNewQuestionAnswers(Question &question, int &diffChoice, std::string fullQuestionID) {
 
-    writeQuestionGuide(diffChoice,question);
+    writeQuestionGuide(diffChoice, question);
 
     writeAnswersGuide(question);
 
-    printQuestionPreview(question,diffChoice,fullQuestionID);
+    printQuestionPreview(question, diffChoice, fullQuestionID);
 
     writeCorrectAnswerGuide(question);
 }
@@ -60,7 +60,7 @@ void NewQuestion::writingNewQuestionAnswers(Question &question, int &diffChoice,
 int NewQuestion::selectingDifficultyOfQuestion(std::vector<int> &numberOfQuestionChoices) {
     printSelectingDifficultyOfQuestion();
     int answer = validInput(numberOfQuestionChoices);
-    system("cls");//clearing console
+    system("cls");
     return answer;
 }
 
@@ -75,10 +75,10 @@ void NewQuestion::printSelectingDifficultyOfQuestion() {
     std::cout << "\n\n  Please enter the number of your choice: ";
 }
 
-char NewQuestion::selectingCategory(const std::string& choiceSelection) {
+char NewQuestion::selectingCategory(const std::string &choiceSelection) {
     printSelectingCategory();
     char answer = validInput(choiceSelection);
-    system("cls");//clearing console
+    system("cls");
     return answer;
 }
 
@@ -113,29 +113,28 @@ std::string NewQuestion::selectTopic(char &choice) {
         return "topics/Politics.txt";
 
     } else if (choice == '0') {
-        system("cls");//clearing console
+        system("cls");
         return "return";
-    }
-    else{
+    } else {
         return "NULL";
     }
 }
 
-void NewQuestion::generateID(ID &questionID,int diffChoice,const std::string& topic, char categoryChoice) {
+void NewQuestion::generateID(ID &questionID, int diffChoice, const std::string &topic, char categoryChoice) {
     questionID.firstTwoDigitsIDGenerator(diffChoice);
 
     int additionalQuestion = questionID.numberOfVariationsOfAQuestion(topic) + 1;
 
-    questionID.lastFiveDigitsIDGenerator(categoryChoice - '0',additionalQuestion);
+    questionID.lastFiveDigitsIDGenerator(categoryChoice - '0', additionalQuestion);
 }
 
 void NewQuestion::generateQuestion(Question &question, ID &questionID, int diffChoice,
-                                       const std::string &topic) {
+                                   const std::string &topic) {
     writingNewQuestionAnswers(question, diffChoice, questionID.getID());
 
-    question.setQuestion(questionCheckNewLine(question.getQuestion()));//checking for new line
+    question.setQuestion(questionCheckForNewLine(question.getQuestion()));//checking for new line
 
-    enteringNewInfoIntoFile(topic,question,diffChoice, questionID.getID());
+    enteringNewInfoIntoFile(topic, question, diffChoice, questionID.getID());
 }
 
 void NewQuestion::writeQuestionGuide(int diffChoice, Question &question) {
@@ -153,10 +152,10 @@ void NewQuestion::writeQuestionGuide(int diffChoice, Question &question) {
     }
 
     std::string newQuestion = question.getQuestion();
-    std::getline(std::cin,newQuestion,'?');
+    std::getline(std::cin, newQuestion, '?');
     question.setQuestion(newQuestion);
 
-    system("cls");//clearing console
+    system("cls");
 }
 
 void NewQuestion::writeAnswersGuide(Question &question) {
@@ -178,7 +177,7 @@ void NewQuestion::writeAnswersGuide(Question &question) {
     std::cout << "  " << "D) ";
     std::getline(std::cin, question.forthAnswer, '\n');
 
-    system("cls");//clearing console
+    system("cls");
 }
 
 void NewQuestion::printQuestionPreview(const Question &question, int &diffChoice, const std::string &fullQuestionID) {
@@ -203,5 +202,5 @@ void NewQuestion::writeCorrectAnswerGuide(Question &question) {
     } while (correctAnswer != 'A' && correctAnswer != 'B' && correctAnswer != 'C' && correctAnswer != 'D');
     question.setCorrectAnswer(correctAnswer);
 
-    system("cls");//clearing console
+    system("cls");
 }

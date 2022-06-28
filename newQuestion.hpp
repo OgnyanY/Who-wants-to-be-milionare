@@ -1,9 +1,4 @@
-//
-// Created by Acer on 24.6.2022 г..
-//
-
-#ifndef WHO_WANTS_TO_BE_MILIONARE_NEWQUESTION_HPP
-#define WHO_WANTS_TO_BE_MILIONARE_NEWQUESTION_HPP
+#pragma once
 
 #include <iostream>
 #include <fstream>
@@ -51,6 +46,3 @@ private:
     std::string choiceSelection = {'1', '2', '3', '4', '5', '0'};
     std::vector<int> numberOfQuestionChoices = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 };
-
-
-#endif //WHO_WANTS_TO_BE_MILIONARE_NEWQUESTION_HPP

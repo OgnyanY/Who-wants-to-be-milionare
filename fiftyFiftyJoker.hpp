@@ -1,5 +1,4 @@
-#ifndef WHO_WANTS_TO_BE_MILIONARE_FIFTYFIFTYJOKER_HPP
-#define WHO_WANTS_TO_BE_MILIONARE_FIFTYFIFTYJOKER_HPP
+#pragma once
 
 #include <stdlib.h>
 
@@ -13,17 +12,15 @@
 #include "usefulFunctions.hpp"
 
 class FiftyFiftyJoker {
- public:
-  void useJoker(Question &question);
+public:
+    void useJoker(Question &question);
 
- private:
-  int findCorrectAnswerIndex(Question &question);
+private:
+    int findCorrectAnswerIndex(Question &question);
 
-  int findFirstOptionToDelete(int &skipOption);
+    int findFirstOptionToDelete(int &skipOption);
 
-  int findSecondOptionToDelete(int &skipOption, int &firstDeleteOptionIndex);
+    int findSecondOptionToDelete(int &skipOption, int &firstDeleteOptionIndex);
 
-  void eraseWrongAnswer(int indexToDelete, Question &question);
+    void eraseWrongAnswer(int indexToDelete, Question &question);
 };
-
-#endif  // WHO_WANTS_TO_BE_MILIONARE_FIFTYFIFTYJOKER_HPP

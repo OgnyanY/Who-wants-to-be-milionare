@@ -1,5 +1,4 @@
-#ifndef WHO_WANTS_TO_BE_MILIONARE_CALLFRIENDJOKER_HPP
-#define WHO_WANTS_TO_BE_MILIONARE_CALLFRIENDJOKER_HPP
+#pragma once
 
 #include <iostream>
 #include <fstream>
@@ -26,6 +25,3 @@ private:
 
     virtual void giveCorrectAnswer(char &correctAnswer);
 };
-
-
-#endif //WHO_WANTS_TO_BE_MILIONARE_CALLFRIENDJOKER_HPP
