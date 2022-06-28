@@ -14,7 +14,7 @@
 #include "id.hpp"
 #include "question.hpp"
 
-class newQuestion {
+class NewQuestion {
 public:
     void EnteringNewQuestion();
 
@@ -39,9 +39,6 @@ private:
     void generateID(ID &questionID, int diffChoice, const std::string &topic, char categoryChoice);
 
     void generateQuestion(Question &question, ID &questionID, int diffChoice, const std::string &topic);
-
-    void searchHowManyPossibleQuestions(const std::string &nameOfFile, int &timesQuestionExists,
-                                        std::string questionID);
 
     void writeQuestionGuide(int diffChoice, Question &question);
 

@@ -30,7 +30,8 @@ void MainMenuPage::makeChoiceInMenu(char menuChoice) {
         startNewGame.pickATopic();
     }
     else if (menuChoice == '2') {
-        //EnteringNewQuestion();
+        NewQuestion addingQuestion;
+        addingQuestion.EnteringNewQuestion();
     }
     else if (menuChoice == '3') {
         //EditingExistingQuestion();

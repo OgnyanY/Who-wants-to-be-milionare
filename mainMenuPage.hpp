@@ -7,7 +7,7 @@
 
 //#include "editQuestion.hpp"
 #include "newGame.hpp"
-//#include "newQuestion.hpp"
+#include "newQuestion.hpp"
 #include "usefulFunctions.hpp"
 
 class MainMenuPage {
