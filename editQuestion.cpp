@@ -123,7 +123,7 @@ void EditQuestion::SearchIDInFiles(std::string &searchQuestionID, const std::str
                     }
                     //ask user to writhe question + 4 options + correct answer
                     //writingNewQuestionAnswers(newQuestion, newOption1, newOption2, newOption3, newOption4, newCorrectAnswer, NumberQuestion, searchQuestID);
-                    questionCheckNewLine(newQuestion);//check if there is a new line, if yes, swap it for empty space
+                    questionCheckForNewLine(newQuestion);//check if there is a new line, if yes, swap it for empty space
                     /*int newQestLength = StrLength(newQuestion);//getting lengths string of all strings
                     int newOpt1Length = StrLength(newOption1);
                     int newOpt2Length = StrLength(newOption2);

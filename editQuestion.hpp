@@ -1,9 +1,4 @@
-//
-// Created by Acer on 26.6.2022 г..
-//
-
-#ifndef WHO_WANTS_TO_BE_MILIONARE_EDITQUESTION_HPP
-#define WHO_WANTS_TO_BE_MILIONARE_EDITQUESTION_HPP
+#pragma once
 
 #include <iostream>
 #include <vector>
@@ -27,6 +22,3 @@ private:
 
 
 };
-
-
-#endif //WHO_WANTS_TO_BE_MILIONARE_EDITQUESTION_HPP
