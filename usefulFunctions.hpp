@@ -1,5 +1,4 @@
-#ifndef WHO_WANTS_TO_BE_MILIONARE_USEFULFUNCTIONS_HPP
-#define WHO_WANTS_TO_BE_MILIONARE_USEFULFUNCTIONS_HPP
+#pragma once
 
 #include <string>
 #include <vector>
@@ -10,22 +9,14 @@ void printNewLines(int number);
 
 void printEmptySpaces(int number);
 
-void FillingEmptySpace(std::string &option, int optionSize);
+void fillingWithEmptySpace(std::string &option, int optionSize);
 
 void printBorder();
 
 char validInput(const std::string &str);
 
-int validInput(const std::vector<int>& arr);
+int validInput(const std::vector<int> &arr);
 
-void ValidInputForWords(const char enteringWord[], const char possibleWord[], int MessageSize, bool &incorrectValidation);
+void thanksForPlaying();
 
-void AddAdditonalCharacters(char OGstring[], int &OGlength, char addstr1[]);
-
-void ProperNewLineToString(char question[]);
-
-void ThanksForPlaying();
-
-std::string questionCheckNewLine(std::string question);
-
-#endif //WHO_WANTS_TO_BE_MILIONARE_USEFULFUNCTIONS_HPP
+std::string questionCheckForNewLine(std::string question);
