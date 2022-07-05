@@ -180,7 +180,7 @@ void NewQuestion::writeAnswersGuide(Question &question) {
     system("cls");
 }
 
-void NewQuestion::printQuestionPreview(const Question &question, int &diffChoice, const std::string &fullQuestionID) {
+void NewQuestion::printQuestionPreview(const Question &question, int diffChoice, const std::string &fullQuestionID) {
     printNewLines(6);
     std::cout << "  ========================================== Who wants to be a millionaire? ==========================================\n\n";
     std::cout << "  ID of question: " << fullQuestionID << '\n';

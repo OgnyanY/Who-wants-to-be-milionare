@@ -22,6 +22,10 @@ public:
 
     void lastFiveDigitsIDGenerator(const int topicChoice, int number);
 
+    int topicNumber() const ;
+
+    std::string fileToSearchIn() const;
+
 private:
     std::string id;
 };

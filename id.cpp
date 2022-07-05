@@ -71,3 +71,30 @@ void ID::lastFiveDigitsIDGenerator(const int topicChoice,
         id[10] = levelFromIntToChar(numberOfVariations);
     }
 }
+
+int ID::topicNumber() const {
+  return id[7] - '0';
+}
+
+std::string ID::fileToSearchIn() const {
+  int topic = topicNumber();
+  switch (topic) {
+    case 1:
+      return "topics/Life.txt";
+      break;
+    case 2:
+      return "topics/History.txt";
+      break;
+    case 3:
+      return "topics/Cinema.txt";
+      break;
+    case 4:
+      return "topics/Sports.txt";
+      break;
+    case 5:
+      return "topics/Politics.txt";
+      break;
+    default:
+      break;
+  }
+}

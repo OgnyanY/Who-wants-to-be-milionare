@@ -20,18 +20,23 @@ void Question::loadQuestionAndAnswers(const std::string nameOfFile,
     }
 
     while (std::getline(currentLine, ID_of_question, '\n')) {
-        if (this->ID_of_question == ID) {
+        if (ID_of_question == ID) {
             break;
         }
     }
-    std::getline(currentLine, question, '\n');
-    std::getline(currentLine, firstAnswer, '\n');
-    std::getline(currentLine, secondAnswer, '\n');
-    std::getline(currentLine, thirdAnswer, '\n');
-    std::getline(currentLine, forthAnswer, '\n');
+    if(currentLine.eof()){
+        printCantLoadQuestionAndAnswersMessage();
+    }
+    else{
+        std::getline(currentLine, question, '\n');
+        std::getline(currentLine, firstAnswer, '\n');
+        std::getline(currentLine, secondAnswer, '\n');
+        std::getline(currentLine, thirdAnswer, '\n');
+        std::getline(currentLine, forthAnswer, '\n');
 
-    currentLine.ignore();
-    std::getline(currentLine, correctAnswer, '\n');
+        currentLine.ignore();
+        std::getline(currentLine, correctAnswer, '\n');
+    }
 
     currentLine.close();
 }
@@ -55,6 +60,18 @@ void Question::setCorrectAnswer(char newAnswer) { correctAnswer = newAnswer; }
 std::string Question::getQuestion() const { return question; }
 
 void Question::setQuestion(std::string newQuestion) { question = newQuestion; }
+
+void printCantLoadQuestionAndAnswersMessage(){
+    std::system("cls");//clearing console
+	printNewLines(6);
+	std::cout << "  ========================================== Who wants to be a millionaire? ==========================================\n\n";
+	std::cout << "                                It appears that a question with this ID does not exists,\n";
+	std::cout << "                                      please press any key to return to previous menu!\n";
+	printBorder();
+	std::cout << "                                         ";
+	std::system("pause");
+	std::system("cls");//clearing console
+}
 
 
 

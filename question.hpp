@@ -4,6 +4,8 @@
 #include <fstream>
 #include <iostream>
 
+#include "usefulFunctions.hpp"
+
 class Question {
 public:
     Question() = default;
@@ -22,14 +24,16 @@ public:
 
     void setQuestion(std::string newQuestion);
 
+    void printCantLoadQuestionAndAnswersMessage();
 
-    std::string firstAnswer;
-    std::string secondAnswer;
-    std::string thirdAnswer;
-    std::string forthAnswer;
+
+    std::string firstAnswer = "";
+    std::string secondAnswer = "";
+    std::string thirdAnswer = "";
+    std::string forthAnswer = "";
 private:
     std::string ID_of_question;
-    std::string question;
+    std::string question = "";
 
-    std::string correctAnswer;
+    std::string correctAnswer = "";
 };
