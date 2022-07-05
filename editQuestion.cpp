@@ -70,6 +70,7 @@ void EditQuestion::enterNewInformation() {
     newInformation.writeCorrectAnswerGuide(question);
 
     question.setQuestion(questionCheckForNewLine(question.getQuestion()));//checking for new line
+	convertQuestionIntoCorrectFormat();
 }
 
 std::vector<std::string> EditQuestion::loadOldInformationIntoVector() {
@@ -93,7 +94,6 @@ std::vector<std::string> EditQuestion::loadOldInformationIntoVector() {
     newInformation.push_back(question.thirdAnswer);
     newInformation.push_back(question.forthAnswer);
     newInformation.push_back("\n");
-    newInformation.push_back("");
     newInformation[newInformation.size() - 1] += question.getCorrectAnswer();
 
     for (int i = 0; i < 8; i++) {
@@ -107,6 +107,39 @@ std::vector<std::string> EditQuestion::loadOldInformationIntoVector() {
     changeFileInfo.close();
 
     return newInformation;
+}
+
+void EditQuestion::convertQuestionIntoCorrectFormat(){
+	std::string correctFormatQuestion;
+	std::string correctFormatFirstAnswer;
+	std::string correctFormatSecondAnswer;
+	std::string correctFormatThirdAnswer;
+	std::string correctFormatForthAnswer;
+
+	if(id.getID()[3] != '0'){
+		correctFormatQuestion += id.getID()[3];
+	}
+	correctFormatQuestion += id.getID()[4];
+	correctFormatQuestion += '. ';
+	correctFormatQuestion += question.getQuestion();
+
+	correctFormatFirstAnswer += "A) ";
+	correctFormatFirstAnswer += question.firstAnswer;
+
+	correctFormatSecondAnswer += "B) ";
+	correctFormatSecondAnswer += question.secondAnswer;
+
+	correctFormatThirdAnswer += "C) ";
+	correctFormatThirdAnswer += question.thirdAnswer;
+
+	correctFormatForthAnswer += "D) ";
+	correctFormatForthAnswer += question.forthAnswer;
+
+	question.setQuestion(correctFormatQuestion);
+	question.firstAnswer = correctFormatFirstAnswer;
+	question.secondAnswer = correctFormatSecondAnswer;
+	question.thirdAnswer = correctFormatThirdAnswer;
+	question.forthAnswer = correctFormatForthAnswer;
 }
 
 void EditQuestion::writeNewInformationIntoFile(std::vector<std::string> newInformation) {

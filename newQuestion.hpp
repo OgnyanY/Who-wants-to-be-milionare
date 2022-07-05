@@ -13,7 +13,6 @@ class NewQuestion {
 public:
     void EnteringNewQuestion();
 
-private:
     void writeQuestionGuide(int diffChoice, Question &question);
 
     void writeAnswersGuide(Question &question);
@@ -21,6 +20,7 @@ private:
     void printQuestionPreview(const Question &question, int diffChoice, const std::string &fullQuestionID);
 
     void writeCorrectAnswerGuide(Question &question);
+private:
 
     void printSuccessfulNewQuestion();
 

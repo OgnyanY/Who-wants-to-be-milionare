@@ -22,6 +22,8 @@ private:
 
     std::vector<std::string> loadOldInformationIntoVector();
 
+    void convertQuestionIntoCorrectFormat();
+
     void writeNewInformationIntoFile(std::vector<std::string> newInformation);
 
     void printSuccessfullyEditedQuestionMessage();
