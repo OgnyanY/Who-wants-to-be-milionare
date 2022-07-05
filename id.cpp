@@ -95,6 +95,7 @@ std::string ID::fileToSearchIn() const {
       return "topics/Politics.txt";
       break;
     default:
+      return "";
       break;
   }
 }

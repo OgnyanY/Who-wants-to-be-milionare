@@ -95,6 +95,7 @@ std::vector<std::string> EditQuestion::loadOldInformationIntoVector() {
     newInformation.push_back(question.forthAnswer);
     newInformation.push_back("\n");
     newInformation[newInformation.size() - 1] += question.getCorrectAnswer();
+    newInformation.push_back("");
 
     for (int i = 0; i < 8; i++) {
         std::getline(changeFileInfo, currentLine, '\n');
@@ -120,7 +121,7 @@ void EditQuestion::convertQuestionIntoCorrectFormat(){
 		correctFormatQuestion += id.getID()[3];
 	}
 	correctFormatQuestion += id.getID()[4];
-	correctFormatQuestion += '. ';
+	correctFormatQuestion += ". ";
 	correctFormatQuestion += question.getQuestion();
 
 	correctFormatFirstAnswer += "A) ";

@@ -35,13 +35,13 @@ void NewQuestion::enteringNewInfoIntoFile(const std::string &fileName, const Que
                                           int &numberOfQuestion, const std::string &fullID) {
     std::ofstream NewQuestion(fileName, std::ios::app);
 
-    NewQuestion << '\n' << '\n' << fullID << '\n';
+    NewQuestion << '\n' << fullID << '\n';
     NewQuestion << numberOfQuestion << ". " << question.getQuestion() << "?" << '\n';
     NewQuestion << "A) " << question.firstAnswer << '\n';
     NewQuestion << "B) " << question.secondAnswer << '\n';
     NewQuestion << "C) " << question.thirdAnswer << '\n';
     NewQuestion << "D) " << question.forthAnswer << '\n' << '\n';
-    NewQuestion << question.getCorrectAnswer();
+    NewQuestion << question.getCorrectAnswer() << '\n';
 
     NewQuestion.close();
 }
