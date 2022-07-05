@@ -61,7 +61,7 @@ std::string Question::getQuestion() const { return question; }
 
 void Question::setQuestion(std::string newQuestion) { question = newQuestion; }
 
-void printCantLoadQuestionAndAnswersMessage(){
+void Question::printCantLoadQuestionAndAnswersMessage(){
     std::system("cls");//clearing console
 	printNewLines(6);
 	std::cout << "  ========================================== Who wants to be a millionaire? ==========================================\n\n";

@@ -12,7 +12,8 @@
 class NewQuestion {
 public:
     void EnteringNewQuestion();
-    
+
+private:
     void writeQuestionGuide(int diffChoice, Question &question);
 
     void writeAnswersGuide(Question &question);
@@ -21,7 +22,6 @@ public:
 
     void writeCorrectAnswerGuide(Question &question);
 
-private:
     void printSuccessfulNewQuestion();
 
     void enteringNewInfoIntoFile(const std::string &fileName, const Question &question,
@@ -43,8 +43,6 @@ private:
 
     void generateQuestion(Question &question, ID &questionID, int diffChoice, const std::string &topic);
 
-
-    
 
     std::string choiceSelection = {'1', '2', '3', '4', '5', '0'};
     std::vector<int> numberOfQuestionChoices = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};

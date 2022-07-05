@@ -9,6 +9,7 @@
 #include "newGame.hpp"
 #include "newQuestion.hpp"
 #include "usefulFunctions.hpp"
+#include "editQuestion.hpp"
 
 class MainMenuPage {
 public:

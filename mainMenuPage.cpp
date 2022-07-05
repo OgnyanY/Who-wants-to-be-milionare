@@ -33,7 +33,8 @@ void MainMenuPage::makeChoiceInMenu(char menuChoice) {
         NewQuestion addingQuestion;
         addingQuestion.EnteringNewQuestion();
     } else if (menuChoice == '3') {
-        //EditingExistingQuestion();
+        EditQuestion editQuestion;
+        editQuestion.editQuestion();
     } else {
         thanksForPlaying();
     }

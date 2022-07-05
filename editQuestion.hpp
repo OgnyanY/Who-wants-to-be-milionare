@@ -9,17 +9,23 @@
 
 class EditQuestion {
 public:
-    void startingMainFunction();
+    void editQuestion();
+
+private:
     void writeIdToSearchMessage();
+
     std::string inputIdToSearch();
+
     bool askToEditGivenQuestion();
+
     void enterNewInformation();
+
     std::vector<std::string> loadOldInformationIntoVector();
+
     void writeNewInformationIntoFile(std::vector<std::string> newInformation);
+
     void printSuccessfullyEditedQuestionMessage();
 
-
-    private:
     ID id;
     Question question;
 };
